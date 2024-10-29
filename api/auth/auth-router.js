@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { checkUsernameExists, validateRoleName } = require('./auth-middleware');
 const { JWT_SECRET } = require("../secrets"); // use this secret!
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const User = require('../users/users-model')
 
 router.post("/register", validateRoleName, (req, res, next) => {
@@ -47,6 +48,7 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
       "role_name": "admin" // the role of the authenticated user
     }
    */
+
 });
 
 module.exports = router;
